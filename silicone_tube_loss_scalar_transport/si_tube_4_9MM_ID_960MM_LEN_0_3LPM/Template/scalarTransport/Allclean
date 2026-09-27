@@ -1,0 +1,17 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial clean functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+cleanCase
+
+echo 'Cleaning run files'
+find . \( -name 'nPart*' \) -exec rm {} \;
+rm -rf VTK
+rm -rf *.log
+rm -rf log.*
+rm -rf *.txt
+rm -rf *~
+
+# ----------------------------------------------------------------- end-of-file
