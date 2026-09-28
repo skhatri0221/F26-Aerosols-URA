@@ -1,0 +1,157 @@
+// Parametrized test case for the ERCOFTAC diffuser.
+
+//         Created by Omar Bounous 
+
+//Run using:
+//m4 -P blockMeshDict.m4 > blockMeshDict
+
+//m4 definitions:
+
+
+
+
+
+//Mathematical constants:
+
+
+//Geometry
+
+
+
+//Grid points (integers!):
+
+
+
+
+
+//Define planes
+
+
+
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4.1                                 |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          blockMeshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.001;
+
+vertices
+(
+//Plane A:
+(0.0 0 0) // Vertex A0 = 0 
+(0.0 2.44962685313316 -0.0427583957713446) // Vertex A1 = 1 
+(0.0 2.44962685313316 0.0427583957713446) // Vertex A2 = 2 
+
+//Plane B:
+(960 0 0) // Vertex B0 = 3 
+(960 2.44962685313316 -0.0427583957713446) // Vertex B1 = 4 
+(960 2.44962685313316 0.0427583957713446) // Vertex B2 = 5 
+
+);
+
+
+// Defining blocks:
+blocks
+(
+    //Blocks between plane A and plane B:
+    // block0 
+    hex (0 3 4 1 0 3 5 2) AB
+    (1920 25 1) 
+    simpleGrading (1 0.1 1)
+   
+
+);
+
+edges
+(
+    //Plane A:
+    arc 1 2 (0.0 2.45 0)
+
+    //Plane B:
+    arc 4 5 (960 2.45 0)
+
+
+
+);
+
+// Defining patches:
+boundary
+(
+    axis
+    {
+	type 	symmetryPlane;
+	faces	
+	(
+		(0 3 3 0)
+	);
+    }
+    inlet
+    {
+	type patch;
+	faces
+	(
+		(0 2 1 0)
+	);
+    }
+    outlet
+    {
+	type patch;
+	faces
+	(
+		(3 4 5 3)
+	);
+    }
+    upperWall
+    {
+	type 	wall;
+	faces	
+	(
+
+		(1 2 5 4)
+	);
+    }
+
+    front
+    {
+	type wedge;
+	neighbourPatch back;
+	faces
+	(
+		(0 1 4 3)
+	);
+    }
+    back
+    {
+	type wedge;
+	neighbourPatch front;
+	faces
+	(
+		(2 0 3 5)
+	);
+    }
+);
+
+mergePatchPairs 
+(
+);
+
+// ************************************************************************* //

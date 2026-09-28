@@ -1,0 +1,79 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  9
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 9-c96968adf6d8
+Exec   : blockMesh
+Date   : Sep 25 2026
+Time   : 12:14:46
+Host   : "Khatri"
+PID    : 1935
+I/O    : uncollated
+Case   : /home/skhatri/projects/silicone_tube_loss_scalar_transport/si_tube_4_9MM_ID_960MM_LEN_0_3LPM/Template
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.001
+    Block 0 cell size :
+        i : 0.0005
+        j : 0.00024653 .. 2.4653e-05
+        k : 0 0 8.60507e-06 8.60507e-06 
+
+Adding cell zones
+    0	AB
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 -4.27584e-05) (0.96 0.00244963 4.27584e-05)
+  nPoints: 97971
+  nCells: 48000
+  nFaces: 192025
+  nInternalFaces: 94055
+----------------
+Patches
+----------------
+  patch 0 (start: 94055 size: 0) name: axis
+  patch 1 (start: 94055 size: 25) name: inlet
+  patch 2 (start: 94080 size: 25) name: outlet
+  patch 3 (start: 94105 size: 1920) name: upperWall
+  patch 4 (start: 96025 size: 48000) name: front
+  patch 5 (start: 144025 size: 48000) name: back
+
+End
+

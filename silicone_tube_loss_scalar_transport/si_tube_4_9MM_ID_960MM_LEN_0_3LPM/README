@@ -1,0 +1,8 @@
+cd Template
+make mesh
+make run
+cd ..
+make runAllUp
+[then edit T at time = 1000 to change inlet boundary condition to fixedValue 0]
+make runAllDown
+
